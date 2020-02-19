@@ -8,6 +8,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app-routing.module';
+import { NotFoundComponent } from './layout/not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { AppRoutes } from './app-routing.module';
     FullComponent,
     BlankComponent,
     SpinnerComponent,
-    NavigationComponent
+    NavigationComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

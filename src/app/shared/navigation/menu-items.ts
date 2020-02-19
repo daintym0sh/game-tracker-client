@@ -12,15 +12,15 @@ export const Routes: RouteInfo[] = [
   {
     path: '',
     title: 'Contents',
-    icon: 'mdi mdi-gauge',
-    class: '',
-    ddclass: '',
+    icon: '',
+    class: 'has-arrow',
+    ddclass: 'single-dd',
     extralink: false,
     submenu: [
       {
         path: '/first',
         title: 'First',
-        icon: 'mdi mdi-adjust',
+        icon: '',
         class: '',
         ddclass: 'single-dd',
         extralink: false,
@@ -29,7 +29,7 @@ export const Routes: RouteInfo[] = [
       {
         path: '/second',
         title: 'Second',
-        icon: 'mdi mdi-email',
+        icon: '',
         class: '',
         ddclass: 'single-dd',
         extralink: false,

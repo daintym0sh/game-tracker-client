@@ -9,6 +9,7 @@ export const AppRoutes: Routes = [
     path: '',
     component: FullComponent,
     children: [
+      { path: '', redirectTo: '/first', pathMatch: 'full' },
       {
         path: '',
         loadChildren:

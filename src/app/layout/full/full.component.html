@@ -1,2 +1,35 @@
-<app-navigation></app-navigation>
-<router-outlet></router-outlet>
+<div 
+    id="main-wrapper" 
+    [ngClass]="{'show-sidebar': showMobileMenu}" 
+    [dir]="options.dir"
+    [attr.data-theme]="options.theme" 
+    [attr.data-layout]="options.layout" 
+    [attr.data-sidebartype]="options.sidebartype"
+    [attr.data-sidebar-position]="options.sidebarpos" 
+    [attr.data-header-position]="options.headerpos"
+    [attr.data-boxed-layout]="options.boxed">
+
+    <aside 
+        style="padding: 0;" 
+        class="left-sidebar" 
+        [attr.data-sidebarbg]="options.sidebarbg" 
+        (mouseover)="Logo()" 
+        (mouseout)="Logo()">
+
+        <div class="scroll-sidebar">
+            <app-navigation></app-navigation>
+        </div>
+
+    </aside>
+
+    <div class="page-wrapper">
+
+        <div class="container-fluid">
+
+            <router-outlet></router-outlet>
+
+        </div>
+
+    </div>
+
+</div>
