@@ -1,6 +1,7 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Routes } from './menu-items';
+import { AuthService } from '../../services/auth.service';
 declare var $: any;
 
 @Component({
@@ -28,9 +29,14 @@ export class NavigationComponent implements OnInit {
     }
   }
 
+  logout(){
+    this.authService.logout()
+  }
+
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   // End open close

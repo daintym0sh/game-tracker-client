@@ -9,6 +9,9 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app-routing.module';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 @NgModule({
@@ -23,8 +26,16 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

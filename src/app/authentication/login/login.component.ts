@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  msg = '';
+  isLoading = false;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService, 
+    private routes: Router) { }
 
-  ngOnInit(): void {
+  getButtonStyle(): string{
+    return this.isLoading ? '#076aac73' : '#076aace8';
   }
-
+  
+  check(username: string, password: string) {
+    this.isLoading = true;
+    this.authService
+      .signIn(username, password)
+      .subscribe(user => {
+        this.routes.navigate(['/']);
+      }, error => {
+        this.msg = error;
+        this.isLoading = false;
+      });
+  }
 }

@@ -3,11 +3,13 @@ import { Routes } from '@angular/router';
 import { FullComponent } from './layout/full/full.component';
 import { BlankComponent } from './layout/blank/blank.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
+import { AuthGuard } from './auth.guard';
 
 export const AppRoutes: Routes = [
   {
     path: '',
     component: FullComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: '/first', pathMatch: 'full' },
       {
