@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
   
   user = new BehaviorSubject<User>(null);
-  apiUrl = 'http://game-tracker-server.herokuapp.com'
+  apiUrl = 'https://game-tracker-server.herokuapp.com'
 
   signIn(username: string, password: string) {
     const url = `${this.apiUrl}/api/login`;
