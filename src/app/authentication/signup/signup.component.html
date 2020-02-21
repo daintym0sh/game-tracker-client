@@ -6,27 +6,29 @@
                 <h5 class="font-medium m-b-20">Sign Up</h5>
             </div> -->
             <!-- Form -->
+            <div *ngIf="msg" class="alert" [ngClass]="{'alert-danger': isError, 'alert-success': !isError}">{{ msg }}</div>
             <div class="row">
                 <div class="col-12">
-                    <form class="form-horizontal m-t-20" action="index.html">
+                    <form class="form-horizontal m-t-20" [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
                         <div class="form-group row">
                             <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="text" required=" " placeholder="Email">
+                                <input class="form-control form-control-lg" type="text" required="true" placeholder="Username"  formControlName="username">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="password" required=" " placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password">
+                                <input class="form-control form-control-lg" type="password" required="true" placeholder="Password"  formControlName="password">
                             </div>
                         </div>
                         <div class="form-group text-center ">
                             <div class="col-xs-12 p-b-20 ">
-                                <button class="btn btn-block btn-lg btn-info " type="submit ">SIGN UP</button>
+                                <button 
+                                    [ngStyle]="{'background-color': getButtonStyle()}"
+                                    class="btn btn-block btn-lg btn-info " 
+                                    type="submit ">
+                                    SIGN UP
+                                    <i *ngIf="isLoading" class="fa fa-spinner fa-pulse"></i>
+                                </button>
                             </div>
                         </div>
                         <div class="form-group m-b-0 m-t-10 ">

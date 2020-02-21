@@ -38,6 +38,25 @@ export class AuthService {
       );
   }
 
+  signUp(username: string, password: string) {
+    const url = `/api/signup`;
+    const data = {'username': username, 'password': password}
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+
+    return this.http
+      .post<string>(url, data, options)
+      .pipe(
+        catchError(this.handleError),
+        tap(response => {
+          return response;
+        })
+      );
+  }
+
   autoLogin() {
     const userData = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
@@ -59,6 +78,6 @@ export class AuthService {
   }
 
   private handleError(errorRes: HttpErrorResponse) {
-    return throwError('Invalid Username or Password');
+    return throwError('User already Exists');
   }
 }
