@@ -20,14 +20,14 @@ export class AuthInterceptorService implements HttpInterceptor {
       take(1),
       exhaustMap(user => {
 
-        console.log('environment' + ': ' + environment.production);
-        console.log('environment api url' + ': ' + environment.apiUrl);
-        if(req.url.startsWith('/api') && environment.production){
-          const apiUrl = 'http://game-tracker-server.herokuapp.com';
-          req = req.clone({
-                  url: apiUrl + req.url,
-          });
-        }
+        // console.log('environment' + ': ' + environment.production);
+        // console.log('environment api url' + ': ' + environment.apiUrl);
+        // if(req.url.startsWith('/api') && environment.production){
+        //   const apiUrl = 'http://game-tracker-server.herokuapp.com';
+        //   req = req.clone({
+        //           url: apiUrl + req.url,
+        //   });
+        // }
 
         if (!user) {
           return next.handle(req);

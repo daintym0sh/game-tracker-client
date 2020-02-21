@@ -13,9 +13,10 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
   
   user = new BehaviorSubject<User>(null);
+  apiUrl = 'http://game-tracker-server.herokuapp.com'
 
   signIn(username: string, password: string) {
-    const url = `/api/login`;
+    const url = `${this.apiUrl}/api/login`;
     // let params = new HttpParams();
     // params = params.append('username', username);
     // params = params.append('password', password);
@@ -39,7 +40,7 @@ export class AuthService {
   }
 
   signUp(username: string, password: string) {
-    const url = `/api/signup`;
+    const url = `${this.apiUrl}/api/signup`;
     const data = {'username': username, 'password': password}
     const options = {
       headers: new HttpHeaders({
