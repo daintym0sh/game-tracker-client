@@ -78,6 +78,6 @@ export class AuthService {
   }
 
   private handleError(errorRes: HttpErrorResponse) {
-    return throwError('User already Exists');
+    return throwError(errorRes.error);
   }
 }
