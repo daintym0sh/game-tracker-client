@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://game-tracker-server.herokuapp.com'
+  apiUrl: 'https://game-tracker-server.herokuapp.com'
 };
